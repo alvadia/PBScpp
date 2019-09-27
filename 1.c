@@ -15,17 +15,17 @@ Items MakeItemsSimple() {
   return inputs;
 }
 
-#include <algorithm>
 auto MakePredicate(Items& vector) {
   return [&vector](int input) {
-    return (vector.end()->value == input) ||
-           (input == (std::find_if(
-              vector.begin(),
-              vector.end(),
-              [input](TItem item) {return item.value == input;}
-              )
-           )->value);
-  };
+    auto step = vector.begin();
+    auto rec = [&step, &vector](int input, auto& ref) mutable -> bool{
+        if (step==vector.end()) return false;
+        if (step->value==input) return true;
+        ++step;
+        return ref(input, ref);
+    };
+    return vector.end()->value == input ? true : rec(input, rec);
+    };
 }
 
 #include <assert.h>
