@@ -34,6 +34,5 @@ int main()
     foo_mbRVO(1);
     foo_RVO(1);
     std::cout << "Hello World!\n";
-    C obj = F();
     return 0;
 }
