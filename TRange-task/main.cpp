@@ -4,7 +4,7 @@
 
 #include "TRange.cpp" 
 
-TEST(ExeptionTests, NO_THROW_TESTS) {
+TEST(ExceptionsSet, NO_THROW_TESTS) {
     TRange testee(1, 8, 2);
     EXPECT_NO_THROW(testee.begin());
     EXPECT_NO_THROW(testee.end());
@@ -18,7 +18,7 @@ TEST(ExeptionTests, NO_THROW_TESTS) {
     EXPECT_NO_THROW(set.insert(TRange(-88, 0, 3)));
 }
 
-TEST(ExeptionTests, THROW_TESTS) {
+TEST(ExceptionsLogic, THROW_TESTS) {
     EXPECT_THROW(TRange(1, 8, 0);, 
                  std::logic_error);
     EXPECT_THROW(TRange(1, 1, -2);, 
@@ -35,7 +35,7 @@ TEST(ExeptionTests, THROW_TESTS) {
                  std::out_of_range);
 }
 
-TEST(OperatorTests, TestResultsOperator) {
+TEST(StandartWorkflow, TestResultsOperator) {
     TRange testee(1, 8, 2);
     EXPECT_EQ(1, testee[0]);
     EXPECT_EQ(3, testee[1]);
